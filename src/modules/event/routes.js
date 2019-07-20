@@ -1,5 +1,5 @@
 import express from 'express';
-import coreModule from '../../core';
+import coreModule from '../core';
 import { EventController } from './controller';
 import {
   validateCreate,

@@ -1,7 +1,7 @@
 import moment from 'moment';
 import { Op } from 'sequelize';
-import coreModule from '../../core';
-import { BadRequestError, NotFoundError } from '../../../../common/errors';
+import coreModule from '../core';
+import { BadRequestError, NotFoundError } from '../../../common/errors';
 
 export const EventController = {};
 export default { EventController };

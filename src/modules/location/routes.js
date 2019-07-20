@@ -1,5 +1,5 @@
 import express from 'express';
-import coreModule from '../../core';
+import coreModule from '../core';
 import { LocationController } from './controller';
 import {
   validateCreate,

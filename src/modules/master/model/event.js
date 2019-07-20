@@ -1,5 +1,5 @@
 import { Model } from 'sequelize';
-import core from '../../core';
+import core from '../core';
 
 const { hashIdEncode, setDateFormat } = core.helpers;
 

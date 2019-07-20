@@ -1,5 +1,5 @@
-import coreModule from '../../core';
-import { NotFoundError } from '../../../../common/errors';
+import coreModule from '../core';
+import { NotFoundError } from '../../../common/errors';
 
 export const LocationController = {};
 export default { LocationController };

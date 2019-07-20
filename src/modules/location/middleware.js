@@ -1,6 +1,6 @@
 import validate from 'validate.js';
 import constraints from './validation';
-import { BadRequestError } from '../../../../common/errors';
+import { BadRequestError } from '../../../common/errors';
 
 // eslint-disable-next-line
 export function validateCreate() {
