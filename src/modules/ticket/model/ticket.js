@@ -28,11 +28,13 @@ export class Ticket extends Model {
           model: 'event',
           key: 'id',
         },
+        unique: true,
       },
       type: {
         type: DataTypes.STRING,
         values: ['PREMIUM', 'REGULER', 'FREE'],
         allowNull: false,
+        unique: true,
       },
       qty: {
         type: DataTypes.INTEGER,

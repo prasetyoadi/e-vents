@@ -69,7 +69,7 @@ TicketController.create = async (req, res, next) => {
 
   const decodedEventId = hashIdDecode(reqBody.event_id);
 
-  const eventIsExist = await Event.findOne({ swhere: { id: decodedEventId } });
+  const eventIsExist = await Event.findOne({ where: { id: decodedEventId } });
 
   if (!eventIsExist) {
     return next(new BadRequestError('Event not found'));
@@ -77,6 +77,17 @@ TicketController.create = async (req, res, next) => {
 
   if (!choiceType(reqBody.type)) {
     return next(new BadRequestError('Type is wrong'));
+  }
+
+  const ticketTypeIsExist = await Ticket.findOne({
+    where: {
+      event_id: decodedEventId,
+      type: reqBody.type,
+    }
+  });
+
+  if (ticketTypeIsExist) {
+    return next(new BadRequestError(`${reqBody.type} type already exist for this event `));
   }
 
   const payload = {
