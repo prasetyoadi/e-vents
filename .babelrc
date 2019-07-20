@@ -1,0 +1,8 @@
+{
+  "presets": [["env", {
+    "targets": {
+      "node": "current"
+    }
+  }], "stage-0"],
+  "plugins": ["transform-flow-strip-types", "transform-decorators-legacy"]
+}
