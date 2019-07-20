@@ -57,7 +57,7 @@ export class Event extends Model {
 
   static associate(sequelize) {
     this.Location = this.belongsTo(sequelize.Location, { as: 'location', foreignKey: 'location_id' });
-    this.EventTicket = this.hasMany(sequelize.Ticket, { as: 'ticket', foreignKey: 'event_id' });
+    this.Ticket = this.hasMany(sequelize.Ticket, { as: 'ticket', foreignKey: 'event_id' });
   }
 
   static async getById(id) {
@@ -67,7 +67,7 @@ export class Event extends Model {
       },
       include: [
         this.Location,
-        this.EventTicket,
+        this.Ticket,
       ],
     });
   }

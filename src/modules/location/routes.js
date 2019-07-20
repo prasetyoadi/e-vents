@@ -23,6 +23,10 @@ routes.post(`/${PREFIX}/${PREFIX_MODULE}`,
   validateCreate(),
   wrap(LocationController.create));
 
+routes.post(`/${PREFIX}/${PREFIX_MODULE}/create`,
+  validateCreate(),
+  wrap(LocationController.create));
+
 routes.get(`/${PREFIX}/${PREFIX_MODULE}`,
   wrap(LocationController.list));
 

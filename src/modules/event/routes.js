@@ -23,8 +23,15 @@ routes.post(`/${PREFIX}/${PREFIX_MODULE}`,
   validateCreate(),
   wrap(EventController.create));
 
+routes.post(`/${PREFIX}/${PREFIX_MODULE}/create`,
+  validateCreate(),
+  wrap(EventController.create));
+
 routes.get(`/${PREFIX}/${PREFIX_MODULE}`,
   wrap(EventController.list));
+
+routes.get(`/${PREFIX}/${PREFIX_MODULE}/get_info`,
+  wrap(EventController.listEvent));
 
 routes.get(`/${PREFIX}/${PREFIX_MODULE}/:id`,
   wrap(EventController.get));

@@ -23,6 +23,10 @@ routes.post(`/${PREFIX}/${PREFIX_MODULE}`,
   validateCreate(),
   wrap(TicketController.create));
 
+routes.post(`/${PREFIX}/event/${PREFIX_MODULE}/create`,
+  validateCreate(),
+  wrap(TicketController.create));
+
 routes.get(`/${PREFIX}/${PREFIX_MODULE}`,
   wrap(TicketController.list));
 
