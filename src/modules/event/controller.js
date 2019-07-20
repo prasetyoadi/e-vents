@@ -24,6 +24,45 @@ EventController.get = async (req, res, next) => {
   return res.API.success('Data.', { detail: data });
 };
 
+EventController.listEvent = async (req, res) => {
+  const { Event, Location, Ticket } = sequelize.models;
+  const { page, limit, offset } = paginationBuilder(req.query);
+  // const { q } = req.query;
+
+  const filter = {};
+
+  const data = await Event.findAndCountAll({
+    where: filter,
+    include: [
+      {
+        model: Location,
+        as: 'location',
+      },
+      {
+        model: Ticket,
+        as: 'ticket',
+      },
+    ],
+    limit,
+    offset,
+    order: [
+      ['created_at', 'desc'],
+    ],
+  });
+
+  const pages = Math.ceil(data.count / limit);
+
+  return res.API.success('Data.', {
+    list: data.rows,
+    pagination: {
+      limit,
+      total_page: pages,
+      total_rows: data.count,
+      current_page: page,
+    },
+  });
+};
+
 
 EventController.list = async (req, res) => {
   const { Event, Location } = sequelize.models;
