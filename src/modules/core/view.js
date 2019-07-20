@@ -21,7 +21,9 @@ export default (req) => {
     const errors = _.get(req, `messages.validation.${field}`);
     if (errors && Array.isArray(errors) && errors.length) {
       let html = '';
-      errors.forEach(e => (html += `<span class="append error block">${e}</span>`));
+      errors.forEach((e) => {
+        html += `<span class="append error block">${e}</span>`;
+      });
       return html;
     }
 

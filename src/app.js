@@ -7,9 +7,11 @@ import cors from 'cors';
 import helmet from 'helmet';
 import _ from 'lodash';
 import config from '../config';
+
 import coreModule from './modules/core';
 import locationModule from './modules/location';
 import eventModule from './modules/event';
+import ticketModule from './modules/ticket';
 
 const app = express();
 const sequelize = coreModule.sequelize.db;
@@ -36,6 +38,7 @@ app.set('case sensitive routing', true);
 const models = [
   locationModule.model,
   eventModule.model,
+  ticketModule.model,
 ];
 
 for (const modelCollection of models) {
@@ -68,6 +71,7 @@ app.use(coreModule.middleware.apiResponse());
 app.use(coreModule.routes);
 app.use(locationModule.routes);
 app.use(eventModule.routes);
+app.use(ticketModule.routes);
 
 // eslint-disable-next-line no-unused-vars
 app.use((req, res, next) => {

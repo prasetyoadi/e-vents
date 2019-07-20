@@ -3,11 +3,11 @@ import core from '../../core';
 
 const { hashIdEncode, setDateFormat } = core.helpers;
 
-export class Event extends Model {
+export class Ticket extends Model {
   static init(sequelize, DataTypes) {
     const options = ({
       sequelize,
-      tableName: 'event',
+      tableName: 'ticket',
       freezeTableName: true,
       timestamps: true,
       createdAt: 'created_at',
@@ -21,28 +21,28 @@ export class Event extends Model {
         primaryKey: true,
         autoIncrement: true,
       },
-      location_id: {
+      event_id: {
         type: DataTypes.INTEGER.UNSIGNED,
         allowNull: false,
         references: {
-          model: 'location',
+          model: 'event',
           key: 'id',
         },
       },
-      name: {
-        type: DataTypes.STRING(150),
+      type: {
+        type: DataTypes.STRING,
+        values: ['PREMIUM', 'REGULER', 'FREE'],
         allowNull: false,
-        defaultValue: '',
       },
-      start_date: {
-        type: DataTypes.DATE(),
-        allowNull: true,
-        defaultValue: null,
+      qty: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 0,
       },
-      end_date: {
-        type: DataTypes.DATE(),
-        allowNull: true,
-        defaultValue: null,
+      price: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 0,
       },
       created_at: {
         type: DataTypes.DATE(),
@@ -56,8 +56,7 @@ export class Event extends Model {
   }
 
   static associate(sequelize) {
-    this.Location = this.belongsTo(sequelize.Location, { as: 'location', foreignKey: 'location_id' });
-    this.EventTicket = this.hasMany(sequelize.Ticket, { as: 'ticket', foreignKey: 'event_id' });
+    this.Event = this.belongsTo(sequelize.Event, { as: 'event', foreignKey: 'event_id' });
   }
 
   static async getById(id) {
@@ -66,8 +65,7 @@ export class Event extends Model {
         id,
       },
       include: [
-        this.Location,
-        this.EventTicket,
+        this.Event,
       ],
     });
   }
@@ -78,13 +76,10 @@ export class Event extends Model {
     values.created_at = setDateFormat(values.created_at, 'toUnix');
     values.updated_at = setDateFormat(values.updated_at, 'toUnix');
 
-    values.start_date = setDateFormat(values.start_date, 'toDate');
-    values.end_date = setDateFormat(values.end_date, 'toDate');
-
-    delete values.location_id;
+    delete values.event_id;
 
     return values;
   }
 }
 
-export default { Event };
+export default { Ticket };

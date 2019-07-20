@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { Op } from 'sequelize';
+// import { Op } from 'sequelize';
 import coreModule from '../core';
 import { BadRequestError, NotFoundError } from '../../../common/errors';
 
@@ -10,7 +10,7 @@ const sequelize = coreModule.sequelize.db;
 const {
   hashIdDecode,
   paginationBuilder,
-  setDateFormat,
+  // setDateFormat,
 } = coreModule.helpers;
 
 EventController.get = async (req, res, next) => {
@@ -28,7 +28,7 @@ EventController.get = async (req, res, next) => {
 EventController.list = async (req, res) => {
   const { Event, Location } = sequelize.models;
   const { page, limit, offset } = paginationBuilder(req.query);
-  const { q } = req.query;
+  // const { q } = req.query;
 
   const filter = {};
 
@@ -61,12 +61,12 @@ EventController.create = async (req, res, next) => {
 
   const reqBody = req.body;
 
-  let decodedLocationId = hashIdDecode(reqBody.location_id);
+  const decodedLocationId = hashIdDecode(reqBody.location_id);
 
   const locationIsExist = await Location.findOne({ swhere: { id: decodedLocationId } });
 
   if (!locationIsExist) {
-    return next(new BadRequestError("Location not found"));
+    return next(new BadRequestError('Location not found'));
   }
 
   try {
@@ -82,7 +82,7 @@ EventController.create = async (req, res, next) => {
     const insert = await Event.create(payload);
     return res.API.success('Data.', { detail: insert });
   } catch (e) {
-    return next(new BadRequestError("start_date / end_date is invalid format date"));
+    return next(new BadRequestError('start_date / end_date is invalid format date'));
   }
 };
 
@@ -103,7 +103,7 @@ EventController.edit = async (req, res, next) => {
   const locationIsExist = await Location.findOne({ swhere: { id: decodedLocationId } });
 
   if (!locationIsExist) {
-    return next(new BadRequestError("Location not found"));
+    return next(new BadRequestError('Location not found'));
   }
 
   try {
@@ -115,7 +115,7 @@ EventController.edit = async (req, res, next) => {
       name: reqBody.name,
       start_date: startDate,
       end_date: endDate,
-    }
+    };
 
     data.updated_at = new Date();
     data.changed('updated_at', true);
@@ -123,7 +123,7 @@ EventController.edit = async (req, res, next) => {
     const update = await data.update(payload);
     return res.API.success('Data.', { detail: update });
   } catch (e) {
-    return next(new BadRequestError("start_date / end_date is invalid format date"));
+    return next(new BadRequestError('start_date / end_date is invalid format date'));
   }
 };
 

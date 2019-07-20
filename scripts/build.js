@@ -39,6 +39,7 @@ module.exports = task('build', ({ watch = false, onComplete } = {}) => new Promi
             const data = (src === 'src/server.js' ?
               'require(\'source-map-support\').install(); ' : '') + code +
               (map ? `\n//# sourceMappingURL=${path.basename(src)}.map\n` : '');
+
             fs.writeFileSync(dest, data, 'utf8');
             console.log(src, '->', dest);
             if (map) fs.writeFileSync(`${dest}.map`, JSON.stringify(map), 'utf8');
