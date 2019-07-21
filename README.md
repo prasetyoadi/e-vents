@@ -1,4 +1,4 @@
-# Loket [Mini Project Assignment]
+# Ticketing
 
 ### Documentation
 #### Directory Structure
