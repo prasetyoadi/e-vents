@@ -22,6 +22,9 @@ class Event {
 }
 ```
 
+### Installation
+- `yarn install` Install dependencies
+
 #### Configuration
 Base configuration file is located inside `/config` directory, the `index.js` will be overridden by the local configuration. Local configuration is excluded from the repository and depends on the `NODE_ENV` value. For example, in development environment, the local config file should be `development.js`.
 
@@ -38,7 +41,8 @@ Base configuration file is located inside `/config` directory, the `index.js` wi
 
 #### CLI Commands
 Here's list of commands you can use:
-- `yarn run start` run app server
+- `yarn start` run app server
+- `yarn lint` run es lint
 
 ##### CHANGELOG
 - Add `res.API.error()` and `res.API.success()` as API responder
