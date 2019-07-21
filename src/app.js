@@ -12,6 +12,7 @@ import coreModule from './modules/core';
 import locationModule from './modules/location';
 import eventModule from './modules/event';
 import ticketModule from './modules/ticket';
+import transactionModule from './modules/transaction';
 
 const app = express();
 const sequelize = coreModule.sequelize.db;
@@ -39,6 +40,7 @@ const models = [
   locationModule.model,
   eventModule.model,
   ticketModule.model,
+  transactionModule.model,
 ];
 
 for (const modelCollection of models) {
@@ -72,6 +74,7 @@ app.use(coreModule.routes);
 app.use(locationModule.routes);
 app.use(eventModule.routes);
 app.use(ticketModule.routes);
+app.use(transactionModule.routes);
 
 // eslint-disable-next-line no-unused-vars
 app.use((req, res, next) => {

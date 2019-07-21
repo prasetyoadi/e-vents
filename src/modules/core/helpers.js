@@ -62,10 +62,30 @@ export const paginationBuilder = (queryString) => {
   };
 };
 
+export const findDuplicateValuesInArray = (arrayList) => {
+  let object = {};
+  let result = [];
+
+  arrayList.forEach(function (item) {
+    if (!object[item]) object[item] = 0;
+
+    object[item] += 1;
+  });
+
+  for (let prop in object) {
+    if (object[prop] >= 2) {
+      result.push(prop);
+    }
+  }
+
+  return result;
+};
+
 export default {
   hashIdEncode,
   hashIdDecode,
   setDateFormat,
   flattenErrorMessage,
   paginationBuilder,
+  findDuplicateValuesInArray,
 };

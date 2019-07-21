@@ -1,0 +1,1058 @@
+{
+	"info": {
+		"_postman_id": "bf64f1e6-7fa1-4da7-8ddd-b7077e337534",
+		"name": "Loket",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Shortcut",
+			"item": [
+				{
+					"name": "Create Location",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a60879f-5ec6-418f-a0fa-54a7fe9ace99",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Jakarta\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/location/create",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"location",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Event",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a60879f-5ec6-418f-a0fa-54a7fe9ace99",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"location_id\": \"VolejRejNm\",\n    \"name\": \"Jazz\",\n    \"start_date\": \"2019-07-01\",\n    \"end_date\": \"2019-07-20\"\n}\t"
+						},
+						"url": {
+							"raw": "{{host}}/event/create",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"event",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Ticket",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a60879f-5ec6-418f-a0fa-54a7fe9ace99",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"event_id\": \"VolejRejNm\",\n    \"type\": \"REGULER\",\n    \"qty\": 5,\n    \"price\": 200000\n}"
+						},
+						"url": {
+							"raw": "{{host}}/event/ticket/create",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"event",
+								"ticket",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Event",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a60879f-5ec6-418f-a0fa-54a7fe9ace99",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/event/get_info",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"event",
+								"get_info"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "10",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Purchase Ticket",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a60879f-5ec6-418f-a0fa-54a7fe9ace99",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"event_id\": \"VolejRejNm\",\n  \"items\": [\n    {\n      \"ticket_type\": \"REGULER\",\n      \"qty\": 2\n    },\n    {\n      \"ticket_type\": \"FREE\",\n      \"qty\": 1\n    },\n    {\n      \"ticket_type\": \"PREMIUM\",\n      \"qty\": 3\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{host}}/transaction/purchase",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"transaction",
+								"purchase"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Location",
+			"item": [
+				{
+					"name": "Get All",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a60879f-5ec6-418f-a0fa-54a7fe9ace99",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/location",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"location"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Detail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a60879f-5ec6-418f-a0fa-54a7fe9ace99",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/location/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"location",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "VolejRejNm"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a60879f-5ec6-418f-a0fa-54a7fe9ace99",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Pop\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/location/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"location",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "VolejRejNm"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a60879f-5ec6-418f-a0fa-54a7fe9ace99",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Bandung\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/location",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"location"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a60879f-5ec6-418f-a0fa-54a7fe9ace99",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/location/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"location",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "VolejRejNm"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "64306db3-638a-435f-ba44-4fe9bb68ade3",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "a83161dc-e461-4e9e-b94c-44fbfc133f42",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Event",
+			"item": [
+				{
+					"name": "Get All",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a60879f-5ec6-418f-a0fa-54a7fe9ace99",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/event",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"event"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "10",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Detail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a60879f-5ec6-418f-a0fa-54a7fe9ace99",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/event/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"event",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "VolejRejNm"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a60879f-5ec6-418f-a0fa-54a7fe9ace99",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"location_id\": \"VolejRejNm\",\n    \"name\": \"Jazzzzz\",\n    \"start_date\": \"2019-07-01\",\n    \"end_date\": \"2019-07-20\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/event/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"event",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "VolejRejNm"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a60879f-5ec6-418f-a0fa-54a7fe9ace99",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"location_id\": \"VolejRejNm\",\n    \"name\": \"Jazz\",\n    \"start_date\": \"2019-07-01\",\n    \"end_date\": \"2019-07-20\"\n}\t"
+						},
+						"url": {
+							"raw": "{{host}}/event",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a60879f-5ec6-418f-a0fa-54a7fe9ace99",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/event/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"event",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "Wpmbk5ezJn"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "64306db3-638a-435f-ba44-4fe9bb68ade3",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "a83161dc-e461-4e9e-b94c-44fbfc133f42",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Ticket",
+			"item": [
+				{
+					"name": "Get All",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a60879f-5ec6-418f-a0fa-54a7fe9ace99",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/ticket",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"ticket"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "10",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Detail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a60879f-5ec6-418f-a0fa-54a7fe9ace99",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/ticket/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"ticket",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "VolejRejNm"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a60879f-5ec6-418f-a0fa-54a7fe9ace99",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"event_id\": \"VolejRejNm\",\n    \"type\": \"PREMIUM\",\n    \"qty\": 15,\n    \"price\": 200000\n}"
+						},
+						"url": {
+							"raw": "{{host}}/ticket/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"ticket",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "VolejRejNm"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a60879f-5ec6-418f-a0fa-54a7fe9ace99",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"event_id\": \"VolejRejNm\",\n    \"type\": \"PREMIUM\",\n    \"qty\": 5,\n    \"price\": 10000\n}\t"
+						},
+						"url": {
+							"raw": "{{host}}/ticket",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"ticket"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a60879f-5ec6-418f-a0fa-54a7fe9ace99",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Jazz\",\n    \"is_active\": true,\n    \"type\": \"SONG|PODCAST\",\n    \"image\": \"data:image/png;base64,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\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/ticket/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"ticket",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "Wpmbk5ezJn"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "64306db3-638a-435f-ba44-4fe9bb68ade3",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "a83161dc-e461-4e9e-b94c-44fbfc133f42",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Transaction",
+			"item": [
+				{
+					"name": "Get Detail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a60879f-5ec6-418f-a0fa-54a7fe9ace99",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/transaction/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"transaction",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "VolejRejNm"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a60879f-5ec6-418f-a0fa-54a7fe9ace99",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"event_id\": \"VolejRejNm\",\n  \"items\": [\n    {\n      \"ticket_type\": \"REGULER\",\n      \"qty\": 1\n    },\n    {\n      \"ticket_type\": \"FREE\",\n      \"qty\": 1\n    },\n    {\n      \"ticket_type\": \"PREMIUM\",\n      \"qty\": 1\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{host}}/transaction",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"transaction"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "64306db3-638a-435f-ba44-4fe9bb68ade3",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "a83161dc-e461-4e9e-b94c-44fbfc133f42",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}

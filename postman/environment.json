@@ -1,0 +1,14 @@
+{
+	"id": "82dd5819-b325-4fed-8037-9a95464c9387",
+	"name": "Loket",
+	"values": [
+		{
+			"key": "host",
+			"value": "localhost:4000/api",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2019-07-21T00:28:42.022Z",
+	"_postman_exported_using": "Postman/7.3.2"
+}
