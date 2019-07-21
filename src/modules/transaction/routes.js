@@ -19,6 +19,9 @@ routes.post(`/${PREFIX}/${PREFIX_MODULE}/purchase`,
   validateCreate(),
   wrap(TransactionController.create));
 
+routes.get(`/${PREFIX}/${PREFIX_MODULE}/get_info`,
+  wrap(TransactionController.list));
+
 routes.get(`/${PREFIX}/${PREFIX_MODULE}/:id`,
   wrap(TransactionController.get));
 

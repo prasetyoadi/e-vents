@@ -107,3 +107,41 @@ TransactionController.create = async (req, res, next) => {
 
   return res.API.success('Insert transaction successfully');
 };
+
+TransactionController.list = async (req, res) => {
+  const { TransactionHeader, TransactionItem, Event } = sequelize.models;
+  const { page, limit, offset } = paginationBuilder(req.query);
+
+  const filter = {};
+
+  const data = await TransactionHeader.findAndCountAll({
+    where: filter,
+    include: [
+      {
+        model: TransactionItem,
+        as: 'items',
+      },
+      {
+        model: Event,
+        as: 'event',
+      },
+    ],
+    limit,
+    offset,
+    order: [
+      ['created_at', 'desc'],
+    ],
+  });
+
+  const pages = Math.ceil(data.count / limit);
+
+  return res.API.success('Data.', {
+    list: data.rows,
+    pagination: {
+      limit,
+      total_page: pages,
+      total_rows: data.count,
+      current_page: page,
+    },
+  });
+};
