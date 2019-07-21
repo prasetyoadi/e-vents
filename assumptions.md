@@ -1,2 +1,3 @@
+## Design Tables
 
-![Schema of ticket events](/public/events.png)
+![Design Tables](/public/events.png)
