@@ -7,8 +7,11 @@ let build;
 let server;
 
 function spawnServerProcess() {
+  const env = Object.assign(process.env, {
+    NODE_CONFIG_DIR: path.join(path.dirname(__dirname), 'config')
+  });
   const args = (process.env.NODE_DEBUG in ['true', 'on', 'yes', '1']) ? ['--inspect', '--no-lazy'] : [];
-  server = cp.spawn('node', [...args, 'server.js'], { cwd: './build', stdio: 'inherit' });
+  server = cp.spawn('node', [...args, 'server.js'], { cwd: './build', stdio: 'inherit', env });
 }
 
 process.once('cleanup', () => {
