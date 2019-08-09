@@ -26,7 +26,29 @@ class Event {
 - `yarn install` Install dependencies
 
 #### Configuration
-Base configuration file is located inside `/config` directory, the `index.js` will be overridden by the local configuration. Local configuration is excluded from the repository and depends on the `NODE_ENV` value. For example, in development environment, the local config file should be `development.js`.
+Base configuration file is located inside `/config` directory, the `default.js` will be overridden by the local configuration. Local configuration is excluded from the repository and depends on the `NODE_ENV` value. For example, in development environment, the local config file should be `development.js`.
+
+You can run this in your terminal:
+
+`cp config/local.example.js config/local.js`
+
+OR for development:
+
+`cp config/local.example.js config/development.local.js`
+
+OR
+
+`cp config/local.example.js config/development.js`
+
+OR for production:
+
+`cp config/local.example.js config/production.local.js`
+
+OR
+
+`cp config/local.example.js config/production.js`
+
+Filled the value based on your configuration, and it will be overrided by `default.js` values if you dont set yet. Click [this](https://github.com/lorenwest/node-config), for more details about configuration.
 
 #### Migrations & Seed
 - To create new migration script, use `yarn sequelize migration:generate -- --name {NAME}`
